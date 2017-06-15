@@ -82,10 +82,20 @@ extension StravaClient {
         
         // UIApplication.shared.openURL(Router.authorizationUrl)
 
+        
         safariViewController = SFSafariViewController(url: Router.authorizationUrl)
         if let safariViewController = safariViewController {
             (sender ?? currentViewController)?.present(safariViewController, animated: true, completion: nil)
         }
+    }
+    
+    /**
+     Checks if an instance of the oauth token exists, but does not check that
+     the token is still valid.
+    **/
+    public func authorized() -> Bool {
+        let key = self.config?.delegate.get()
+        return (key?.accessToken != nil)
     }
     
     /**
