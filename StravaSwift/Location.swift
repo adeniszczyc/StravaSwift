@@ -27,4 +27,12 @@ public struct Location: Strava {
         self.lat = points.first?.double
         self.lng = points.last?.double
     }
+    
+    public func getLat() -> Double? {
+        return self.lat
+    }
+    
+    public func getLng() -> Double? {
+        return self.lng
+    }
 }
